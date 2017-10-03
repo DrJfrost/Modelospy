@@ -57,7 +57,7 @@ class charChooserGUI:
         root2 = Tk()
         root2.title("Weapon Chooser")
         root2.configure(bg="#191919")
-        root2.minsize(width=1000, height=500)
+        root2.minsize(width=1000, height=600)
 
         # **** Content ***
 
@@ -71,16 +71,16 @@ class charChooserGUI:
 
         default = PhotoImage(file="default.png")
 
-        char1 = Button(label, image=default, command=lambda: self.createChar(raze, 1), bg="black")
+        char1 = Button(label, image=default, command=lambda: self.createChar(raze, 1, nCharVar.get()), bg="black")
         char1.image = default
         char1.grid(row=0, padx=10, pady=5)
-        char2 = Button(label, image=default, command=lambda: self.createChar(raze, 2), bg="black")
+        char2 = Button(label, image=default, command=lambda: self.createChar(raze, 2, nCharVar.get()), bg="black")
         char2.image = default
         char2.grid(row=0, column=1, padx=10, pady=5)
-        char3 = Button(label, image=default, command=lambda: self.createChar(raze, 3), bg="black")
+        char3 = Button(label, image=default, command=lambda: self.createChar(raze, 3, nCharVar.get()), bg="black")
         char3.image = default
         char3.grid(row=0, column=2, padx=10, pady=5)
-        char4 = Button(label, image=default, command=lambda: self.createChar(raze, 4), bg="black")
+        char4 = Button(label, image=default, command=lambda: self.createChar(raze, 4, nCharVar.get()), bg="black")
         char4.image = default
         char4.grid(row=0, column=3, padx=10, pady=5)
 
@@ -95,13 +95,24 @@ class charChooserGUI:
         name4 = Label(label, text="raza.getWeapon(4)", font="times 10 bold italic", fg="#ffca1e", bg="#3a3a3a")
         name4.grid(row=1, column=3)
 
+        nCharMsj= Label(label, text="Choose how many characters you want :)", font="times 15 bold italic", fg="#ffca1e", bg="#222222")
+        nCharMsj.grid(row=2, column=0, columnspan=2, sticky=E)
+
+        nCharVar = StringVar(label)
+        nCharVar.set("1")
+        nChar = ["1", "2", "3"]
+
+        nCharMenu = OptionMenu(label, nCharVar, *nChar)
+        nCharMenu.config(width=5, font="times 15 bold italic", fg="#ffca1e", bg="#2d2d2d", highlightbackground="#000000", activebackground="#222222")
+        nCharMenu.grid(row=2, column=2, pady=30, sticky=E)
+
         # *** Adds the whole content that's on the label ***
 
         label.pack()
 
-    def createChar(self, raze, weapon):
+    def createChar(self, raze, weapon, nChar):
 
-        print("this would create raze number "+str(raze)+" with the weapon "+str(weapon))
+        print("this would create raze number "+str(raze)+" with the weapon "+str(weapon)+" and "+str(nChar)+" of them")
 
 
 # *** Defines window ***
