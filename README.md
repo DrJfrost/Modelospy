@@ -1,2 +1,2 @@
 # Modelospy
-Solo descarguenlo y dejen todo en una misma carpeta :p
+Solo descarguenlo y dejen todo en una misma carpeta :v
