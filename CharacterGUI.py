@@ -1,9 +1,8 @@
 from tkinter import *
-from Control.EnlistCharacter import EnlistCharacter
+from EnlistCharacter import EnlistCharacter
 import pygame,sys
 from pygame.locals import *
 from random import randint
-
 
 class charChooserGUI:
     imageweapon=None
@@ -23,10 +22,10 @@ class charChooserGUI:
 
         # ***** Images ****
 
-        img1 = PhotoImage(file="1.png")
-        img2 = PhotoImage(file="2.png")
-        img3 = PhotoImage(file="3.png")
-        img4 = PhotoImage(file="4.png")
+        img1 = PhotoImage(file="images_characters/1.png")
+        img2 = PhotoImage(file="images_characters/2.png")
+        img3 = PhotoImage(file="images_characters/3.png")
+        img4 = PhotoImage(file="images_characters/4.png")
 
         char1 = Button(label, image=img1, command=lambda: self.chooseWeapon(1), bg="black")
         char1.image = img1
