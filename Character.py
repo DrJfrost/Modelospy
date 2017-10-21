@@ -31,5 +31,49 @@ class Character():
         pass
     
     
+class Conjurer(Character):
+    def __init__(self):
+        print("hola soy un mago")
+        self.image = "images_characters/Witch.png"
+    
+    
+    #metodo de prueba
+    def hable(self):
+        return("yo soy mago")
+    
+    
+class Devil(Character):
+    
+    def __init__(self):
+        print("hola soy un demonio")
+        self.image = "images_characters\Demon.png"
+        
+
+    #metodo de prueba
+    def hable(self):
+        return("yo soy demonio")
+    
+    
+class Orc(Character):
+    def __init__(self):
+        print("hola soy un orco")
+        self.image = "images_characters\orc.png"
+       
+        
+    #metodo de prueba
+    def hable(self):
+        return("yo soy orco")
+    
+    
+class Warrior(Character):
+    def __init__(self):
+        print("hola soy un guerrero")
+        self.image = "images_characters\Globin.png"
+        
+        
+    #metodo de prueba
+    def hable(self):
+        return("yo soy guerrero")
+    
     
     

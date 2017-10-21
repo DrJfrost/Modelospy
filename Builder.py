@@ -15,3 +15,13 @@ class Builder():
     def getCharacter(self):
         return self.character
     
+    
+class CharacterBuilder(Builder):
+    def __init__(self):
+        pass
+    def buildCharacter(self, character):
+        self.character = character
+        
+    def buildWeapon(self, weapon):
+        #self.weapon = weapon
+        self.character.setWeapon(weapon)

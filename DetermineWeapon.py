@@ -3,18 +3,18 @@ Created on 18/09/2017
 
 @author: Sebastian
 '''
-from Factories.EpicScepterCreator import EpicScepterCreator
-from Factories.LegendaryCaneCreator import LegendaryCaneCreator
-from Factories.HeavenlyScepterCreator import HeavenlyScepterCreator
-from Factories.DamnBladeCreator import DamnBladeCreator
-from Factories.HadesSwordCreator import HadesSwordCreator
-from Factories.DemonSwordCreator import DemonSwordCreator
-from Factories.DragonSwordCreator import DragonSwordCreator
-from Factories.OdinSpearCreator import OdinSpearCreator
-from Factories.ExcaliburSwordCreator import ExcaliburSwordCreator
-from Factories.MortalDaggerCreator import MortalDaggerCreator
-from Factories.VampireSpearCreator import VampireSpearCreator
-from Factories.DragonTailCreator import DragonTailCreator
+from WeaponCreator import EpicScepterCreator
+from WeaponCreator import LegendaryCaneCreator
+from WeaponCreator import HeavenlyScepterCreator
+from WeaponCreator import DamnBladeCreator
+from WeaponCreator import HadesSwordCreator
+from WeaponCreator import DemonSwordCreator
+from WeaponCreator import DragonSwordCreator
+from WeaponCreator import OdinSpearCreator
+from WeaponCreator import ExcaliburSwordCreator
+from WeaponCreator import MortalDaggerCreator
+from WeaponCreator import VampireSpearCreator
+from WeaponCreator import DragonTailCreator
 class DetermineWeapon():
     def __init__(self):
         pass

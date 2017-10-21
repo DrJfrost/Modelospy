@@ -4,12 +4,12 @@ Created on 18/09/2017
 @author: Sebastian
 '''
 
-from Control.DetermineCharacter import DetermineCharacter
-from Control.DetermineWeapon import DetermineWeapon
-from Builder.Director import Director
-from Builder.CharacterBuilder import CharacterBuilder
-from Characters.Character import Character
-from Weapons.Weapon import Weapon
+from DetermineCharacter import DetermineCharacter
+from DetermineWeapon import DetermineWeapon
+from Director import Director
+from Builder import CharacterBuilder
+import Character
+import Weapon
 
 
 class EnlistCharacter():

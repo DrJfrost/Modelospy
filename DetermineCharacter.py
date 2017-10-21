@@ -3,10 +3,10 @@ Created on 18/09/2017
 
 @author: Sebastian
 '''
-from Factories.OrcCreator import OrcCreator
-from Factories.ConjurerCreator import ConjurerCreator
-from Factories.DevilCreator import DevilCreator
-from Factories.WarriorCreator import WarriorCreator
+from CharacterCreator import OrcCreator
+from CharacterCreator import ConjurerCreator
+from CharacterCreator import DevilCreator
+from CharacterCreator import WarriorCreator
 class DetermineCharacter():
     def __init__(self):
         pass
