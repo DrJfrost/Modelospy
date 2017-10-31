@@ -180,26 +180,35 @@ class charChooserGUI:
             imagen_arma = pygame.image.load( imweapon )
             
             imagen_personaje = pygame.image.load( imchar )
+            imagen_aurora = pygame.image.load("aurora/aurora3.png")
             if (raze==1):
                 X=90
                 Y=310
                 posX=100
                 posY=350
+                positX=-15
+                positY=260
             if (raze==2):
                 X=28
                 Y=345
                 posX=150
                 posY=350
+                positX=30
+                positY=260
             if (raze==3):
                 X=140
                 Y=440
                 posX=100
                 posY=350
+                positX=25
+                positY=260
             if (raze==4):
                 X=170
                 Y=310
                 posX=100
-                posY=350 
+                posY=350
+                positX=-15
+                positY=240
                    
             fondo=pygame.image.load("fondo.jpg")
             velocidad=50
@@ -210,18 +219,24 @@ class charChooserGUI:
                 ventana.fill(verde)
                 ventana.blit(fondo,(0,0))
                 if(nchar=="1"):
+                    ventana.blit(imagen_aurora,(positX,positY))
                     ventana.blit(imagen_personaje,(posX,posY))
                     ventana.blit(imagen_arma,(X,Y))
                 if(nchar=="2"):
+                    ventana.blit(imagen_aurora,(positX,positY))
                     ventana.blit(imagen_personaje,(posX,posY))
                     ventana.blit(imagen_arma,(X,Y))
+                    ventana.blit(imagen_aurora,(positX+250,positY))
                     ventana.blit(imagen_personaje,(posX+250,posY))
                     ventana.blit(imagen_arma,(X+250,Y))
                 if(nchar=="3"):
+                    ventana.blit(imagen_aurora,(positX,positY))
                     ventana.blit(imagen_personaje,(posX,posY))
                     ventana.blit(imagen_arma,(X,Y))
+                    ventana.blit(imagen_aurora,(positX+250,positY))
                     ventana.blit(imagen_personaje,(posX+250,posY))
                     ventana.blit(imagen_arma,(X+250,Y))
+                    ventana.blit(imagen_aurora,(positX+500,positY))
                     ventana.blit(imagen_personaje,(posX+500,posY))
                     ventana.blit(imagen_arma,(X+500,Y))    
                 
@@ -232,9 +247,11 @@ class charChooserGUI:
                         sys.exit()
                     elif event.type == pygame.KEYDOWN:
                         if event.key==K_LEFT:
+                            positX-=velocidad
                             X-=velocidad
                             posX-=velocidad
                         elif event.key==K_RIGHT:
+                            positX+=velocidad
                             posX+=velocidad    
                             X+=velocidad        
                 pygame.display.update()
