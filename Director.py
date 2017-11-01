@@ -11,6 +11,7 @@ class Director():
         self.constructor=constructor
     def getCharacter(self):
         return self.constructor.getCharacter()
-    def BuildCharacter(self, character, weapon):
+    def BuildCharacter(self, character, weapon, aurora):
         self.constructor.buildCharacter(character)
         self.constructor.buildWeapon(weapon)
+        self.constructor.buildAurora(aurora)

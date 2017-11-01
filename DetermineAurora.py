@@ -10,7 +10,5 @@ class DetermineAurora():
     aurora=None
     def createAurora(self, number):
         self.createaurora={1: WaterAuroraCreator(), 2: FireAuroraCreator(), 3: DevilAuroraCreator(), 4: PsychicAuroraCreator() }
-        self.aurora = self.createaurora[number].createAurora()
-        print(str(self.aurora))
     def getAurora(self):
         return self.aurora

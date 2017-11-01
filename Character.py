@@ -10,6 +10,8 @@ class Character():
     objclone=None
     
     image=None
+    aurora= None
+    auroraNum=None
 
     
     def clone(self):
@@ -24,6 +26,25 @@ class Character():
     
     def getImage(self):
         return self.image
+    def setAurora(self, aurora):
+        self.auroraNum=aurora
+        if (aurora==0):
+            self.aurora="aurora/Aurora.png"
+
+        if (aurora==1):
+            self.aurora="aurora/Aurora1.png"
+
+        if (aurora==2):
+            self.aurora="aurora/Aurora2.png"
+
+        if (aurora==3):
+            self.aurora="aurora/Aurora3.png"
+
+    def getAurora(self):
+        return self.aurora
+    def getAuroraNum(self):
+        return self.auroraNum
+
    
 
     #metodo de prueba

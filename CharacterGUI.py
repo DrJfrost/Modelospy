@@ -1,12 +1,13 @@
 from tkinter import *
 from EnlistCharacter import EnlistCharacter
-import pygame,sys
+import pygame, sys
 from pygame.locals import *
 from random import randint
 
+
 class charChooserGUI:
-    imageweapon=None
-    
+    imageweapon = None
+
     def __init__(self, master):
 
         # ***** Parent Window Size ****
@@ -54,9 +55,8 @@ class charChooserGUI:
         # *** Adds the whole content that's on the label ***
         label.pack()
 
-
     def chooseWeapon(self, raze):
-        
+
         root.destroy()
         root2 = Tk()
         root2.title("Weapon Chooser")
@@ -72,58 +72,58 @@ class charChooserGUI:
         title.pack(pady=(50, 0))
 
         # ***** Images ****
-        raze1=raze
-        
-        
-        if raze1==1:
-            image1=PhotoImage(file="weapons_witch\EpicScepter.png")
-            image2=PhotoImage(file="weapons_witch\HeavenlyScepter.png")
-            image3=PhotoImage(file="weapons_witch\Scepter.png")
+        raze1 = raze
+
+        if raze1 == 1:
+            image1 = PhotoImage(file="weapons_witch\EpicScepter.png")
+            image2 = PhotoImage(file="weapons_witch\HeavenlyScepter.png")
+            image3 = PhotoImage(file="weapons_witch\Scepter.png")
             nameweapon = {1: "Epic Scepter", 2: "Heavenly Scepter", 3: "Scepter"}
             numweapon = {1: 1, 2: 2, 3: 3}
-        if raze1==2:
-            image1=PhotoImage(file="weapons_demon\HadesSword.png")
-            image2=PhotoImage(file="weapons_demon\DamnBlade.png")
-            image3=PhotoImage(file="weapons_demon\DragonHammer.png")
+        if raze1 == 2:
+            image1 = PhotoImage(file="weapons_demon\HadesSword.png")
+            image2 = PhotoImage(file="weapons_demon\DamnBlade.png")
+            image3 = PhotoImage(file="weapons_demon\DragonHammer.png")
             nameweapon = {1: "Hades Sword", 2: "Damn Blade", 3: "Dragon Hammer"}
             numweapon = {1: 4, 2: 5, 3: 6}
-        if raze1==3:
-            image1=PhotoImage(file="weapons_goblin\ExcaliburSword.png")
-            image2=PhotoImage(file="weapons_goblin\Hammer.png")
-            image3=PhotoImage(file="weapons_goblin\OdinSpear.png")
+        if raze1 == 3:
+            image1 = PhotoImage(file="weapons_goblin\ExcaliburSword.png")
+            image2 = PhotoImage(file="weapons_goblin\Hammer.png")
+            image3 = PhotoImage(file="weapons_goblin\OdinSpear.png")
             nameweapon = {1: "Excalibur Sword", 2: "Hammer", 3: "Odin Spear"}
             numweapon = {1: 7, 2: 8, 3: 9}
-        if raze1==4:
-            image1=PhotoImage(file="weapons_orc\DragonTail.png")
-            image2=PhotoImage(file="weapons_orc\MortalDagger.png")
-            image3=PhotoImage(file="weapons_orc\VampireSpear.png")
+        if raze1 == 4:
+            image1 = PhotoImage(file="weapons_orc\DragonTail.png")
+            image2 = PhotoImage(file="weapons_orc\MortalDagger.png")
+            image3 = PhotoImage(file="weapons_orc\VampireSpear.png")
             nameweapon = {1: "Dragon Tail", 2: "Mortal Dagger", 3: "Vampire Spear"}
             numweapon = {1: 10, 2: 11, 3: 12}
-            
 
-        char1 = Button(label, image=image1, command=lambda: self.createChar(raze, numweapon[1],nCharVar.get(), root2), bg="black", activebackground="#222222")
+        char1 = Button(label, image=image1, command=lambda: self.createChar(raze, numweapon[1], nCharVar.get(), root2),
+                       bg="black", activebackground="#222222")
         char1.image = image1
         char1.grid(row=0, padx=10, pady=5)
-        char2 = Button(label, image=image2, command=lambda: self.createChar(raze, numweapon[2],nCharVar.get(), root2), bg="black", activebackground="#222222")
+        char2 = Button(label, image=image2, command=lambda: self.createChar(raze, numweapon[2], nCharVar.get(), root2),
+                       bg="black", activebackground="#222222")
         char2.image = image2
         char2.grid(row=0, column=1, padx=10, pady=5)
-        char3 = Button(label, image=image3, command=lambda: self.createChar(raze, numweapon[3],nCharVar.get(), root2), bg="black", activebackground="#222222")
+        char3 = Button(label, image=image3, command=lambda: self.createChar(raze, numweapon[3], nCharVar.get(), root2),
+                       bg="black", activebackground="#222222")
         char3.image = image3
         char3.grid(row=0, column=2, padx=10, pady=5)
-        
 
         # ****** Names *****
 
-        name1 = Label(label, text = nameweapon[1] , font="times 10 bold italic", fg="#ffca1e", bg="#3a3a3a")
+        name1 = Label(label, text=nameweapon[1], font="times 10 bold italic", fg="#ffca1e", bg="#3a3a3a")
         name1.grid(row=1, column=0)
-        name2 = Label(label, text = nameweapon[2], font="times 10 bold italic", fg="#ffca1e", bg="#3a3a3a")
+        name2 = Label(label, text=nameweapon[2], font="times 10 bold italic", fg="#ffca1e", bg="#3a3a3a")
         name2.grid(row=1, column=1)
-        name3 = Label(label, text = nameweapon[3], font="times 10 bold italic", fg="#ffca1e", bg="#3a3a3a")
+        name3 = Label(label, text=nameweapon[3], font="times 10 bold italic", fg="#ffca1e", bg="#3a3a3a")
         name3.grid(row=1, column=2)
-        
 
         # *** Adds the whole content that's on the label ***
-        nCharMsj= Label(label, text="Choose how many characters you want :)", font="times 15 bold italic", fg="#ffca1e", bg="#222222")
+        nCharMsj = Label(label, text="Choose how many characters you want :)", font="times 15 bold italic",
+                         fg="#ffca1e", bg="#222222")
         nCharMsj.grid(row=2, column=0, columnspan=2, sticky=E)
 
         nCharVar = StringVar(label)
@@ -131,132 +131,126 @@ class charChooserGUI:
         nChar = ["1", "2", "3"]
 
         nCharMenu = OptionMenu(label, nCharVar, *nChar)
-        nCharMenu.config(width=5, font="times 15 bold italic", fg="#ffca1e", bg="#2d2d2d", highlightbackground="#000000", activebackground="#222222")
-        nCharMenu.grid(row=2, column=2, pady=30, sticky=E)
-        
+        nCharMenu.config(width=5, font="times 15 bold italic", fg="#ffca1e", bg="#2d2d2d",
+                         highlightbackground="#000000", activebackground="#222222")
+        nCharMenu.grid(row=2, column=2, pady=30)
+
         label.pack()
 
-    def createChar(self, raze, weapon, nchar,root2):
+    def createChar(self, raze, weapon, nchar, root2):
         root2.destroy()
-        
-        creacion=EnlistCharacter()
+
+        creacion = EnlistCharacter()
         creacion.createWeapon(weapon)
-        
+        creacion.createAurora()
         creacion.createCharacter(raze)
-       
+
         creacion.BuildCharacter()
-        
-              
-        personaje1=None
-        personaje12=None
-        personaje13=None
-        
-        
-        if(nchar=="1"):
-            personaje1=creacion.cloneCharacter()
-            print("nchar: "+ nchar+"weapon: "+str(weapon))
-            
-        if(nchar=="2"):
-            personaje1=creacion.cloneCharacter()
-            personaje12=creacion.cloneCharacter()
-        if(nchar=="3"):
-            personaje1=creacion.cloneCharacter()
-            personaje12=creacion.cloneCharacter()
-            personaje13=creacion.cloneCharacter()
-        imweapon=personaje1.getWeapon().getImageWeapon()
+
+        personaje1 = None
+        personaje12 = None
+        personaje13 = None
+
+        if nchar == "1":
+            personaje1 = creacion.cloneCharacter()
+
+        if nchar == "2":
+            personaje1 = creacion.cloneCharacter()
+            personaje12 = creacion.cloneCharacter()
+        if nchar == "3":
+            personaje1 = creacion.cloneCharacter()
+            personaje12 = creacion.cloneCharacter()
+            personaje13 = creacion.cloneCharacter()
+        imweapon = personaje1.getWeapon().getImageWeapon()
         print(imweapon)
-        imchar=personaje1.getImage()
+        imchar = personaje1.getImage()
         print(imchar)
-        
-        print("this would create raze number "+str(raze)+" with the weapon "+str(weapon)+" and "+str(nchar)+" of them")
-    
+        imAurora = personaje1.getAurora()
+        print(imAurora)
+
         class Animation():
-    
+
             pygame.init()
-            ventana = pygame.display.set_mode((1024,683))
+            ventana = pygame.display.set_mode((1024, 683))
             pygame.display.set_caption("personajes")
-            
-            
-            imagen_arma = pygame.image.load( imweapon )
-            
-            imagen_personaje = pygame.image.load( imchar )
-            imagen_aurora = pygame.image.load("aurora/aurora3.png")
-            if (raze==1):
-                X=90
-                Y=310
-                posX=100
-                posY=350
-                positX=-15
-                positY=260
-            if (raze==2):
-                X=28
-                Y=345
-                posX=150
-                posY=350
-                positX=30
-                positY=260
-            if (raze==3):
-                X=140
-                Y=440
-                posX=100
-                posY=350
-                positX=25
-                positY=260
-            if (raze==4):
-                X=170
-                Y=310
-                posX=100
-                posY=350
-                positX=-15
-                positY=240
-                   
-            fondo=pygame.image.load("fondo.jpg")
-            velocidad=50
-            verde=(0,255,0)
-            derecha=True
-            ventana.blit(fondo,(posX,posY))
+
+            imagen_arma = pygame.image.load(imweapon)
+
+            imagen_personaje = pygame.image.load(imchar)
+            imagen_aurora = pygame.image.load(imAurora)
+            if raze == 1:
+                X = 90
+                Y = 310
+                posX = 100
+                posY = 350
+                positX = -15
+                positY = 260
+            if raze == 2:
+                X = 28
+                Y = 345
+                posX = 150
+                posY = 350
+                positX = 30
+                positY = 260
+            if raze == 3:
+                X = 140
+                Y = 440
+                posX = 100
+                posY = 350
+                positX = 25
+                positY = 260
+            if raze == 4:
+                X = 170
+                Y = 310
+                posX = 100
+                posY = 350
+                positX = -15
+                positY = 240
+
+            fondo = pygame.image.load("fondo.jpg")
+            velocidad = 50
+            verde = (0, 255, 0)
+            derecha = True
+            ventana.blit(fondo, (posX, posY))
             while True:
                 ventana.fill(verde)
-                ventana.blit(fondo,(0,0))
-                if(nchar=="1"):
-                    ventana.blit(imagen_aurora,(positX,positY))
-                    ventana.blit(imagen_personaje,(posX,posY))
-                    ventana.blit(imagen_arma,(X,Y))
-                if(nchar=="2"):
-                    ventana.blit(imagen_aurora,(positX,positY))
-                    ventana.blit(imagen_personaje,(posX,posY))
-                    ventana.blit(imagen_arma,(X,Y))
-                    ventana.blit(imagen_aurora,(positX+250,positY))
-                    ventana.blit(imagen_personaje,(posX+250,posY))
-                    ventana.blit(imagen_arma,(X+250,Y))
-                if(nchar=="3"):
-                    ventana.blit(imagen_aurora,(positX,positY))
-                    ventana.blit(imagen_personaje,(posX,posY))
-                    ventana.blit(imagen_arma,(X,Y))
-                    ventana.blit(imagen_aurora,(positX+250,positY))
-                    ventana.blit(imagen_personaje,(posX+250,posY))
-                    ventana.blit(imagen_arma,(X+250,Y))
-                    ventana.blit(imagen_aurora,(positX+500,positY))
-                    ventana.blit(imagen_personaje,(posX+500,posY))
-                    ventana.blit(imagen_arma,(X+500,Y))    
-                
-        
+                ventana.blit(fondo, (0, 0))
+                if nchar == "1":
+                    ventana.blit(imagen_aurora, (positX, positY))
+                    ventana.blit(imagen_personaje, (posX, posY))
+                    ventana.blit(imagen_arma, (X, Y))
+                if nchar == "2":
+                    ventana.blit(imagen_aurora, (positX, positY))
+                    ventana.blit(imagen_personaje, (posX, posY))
+                    ventana.blit(imagen_arma, (X, Y))
+                    ventana.blit(imagen_aurora, (positX + 250, positY))
+                    ventana.blit(imagen_personaje, (posX + 250, posY))
+                    ventana.blit(imagen_arma, (X + 250, Y))
+                if nchar == "3":
+                    ventana.blit(imagen_aurora, (positX, positY))
+                    ventana.blit(imagen_personaje, (posX, posY))
+                    ventana.blit(imagen_arma, (X, Y))
+                    ventana.blit(imagen_aurora, (positX + 250, positY))
+                    ventana.blit(imagen_personaje, (posX + 250, posY))
+                    ventana.blit(imagen_arma, (X + 250, Y))
+                    ventana.blit(imagen_aurora, (positX + 500, positY))
+                    ventana.blit(imagen_personaje, (posX + 500, posY))
+                    ventana.blit(imagen_arma, (X + 500, Y))
+
                 for event in pygame.event.get():
                     if event.type == QUIT:
                         pygame.quit()
                         sys.exit()
                     elif event.type == pygame.KEYDOWN:
-                        if event.key==K_LEFT:
-                            positX-=velocidad
-                            X-=velocidad
-                            posX-=velocidad
-                        elif event.key==K_RIGHT:
-                            positX+=velocidad
-                            posX+=velocidad    
-                            X+=velocidad        
+                        if event.key == K_LEFT:
+                            positX -= velocidad
+                            X -= velocidad
+                            posX -= velocidad
+                        elif event.key == K_RIGHT:
+                            positX += velocidad
+                            posX += velocidad
+                            X += velocidad
                 pygame.display.update()
-
-
 
 
 # *** Defines window ***
