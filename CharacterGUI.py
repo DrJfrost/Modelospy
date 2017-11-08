@@ -242,14 +242,14 @@ class charChooserGUI:
                         pygame.quit()
                         sys.exit()
                 keys = pygame.key.get_pressed()
-                    if keys[K_LEFT]:
-                        positX -= velocidad
-                        X -= velocidad
-                        posX -= velocidad
-                    elif keys[K_RIGHT]:
-                        positX += velocidad
-                        posX += velocidad
-                        X += velocidad
+                if keys[K_LEFT]:
+                    positX -= velocidad
+                    X -= velocidad
+                    posX -= velocidad
+                elif keys[K_RIGHT]:
+                    positX += velocidad
+                    posX += velocidad
+                    X += velocidad
                 pygame.display.update()
 
 
