@@ -7,6 +7,9 @@ from random import randint
 
 class charChooserGUI:
     imageweapon = None
+    pygame.mixer.init()
+    pygame.mixer.music.load('Musica\musica.wav')
+    pygame.mixer.music.play(-1)
 
     def __init__(self, master):
 
@@ -178,6 +181,7 @@ class charChooserGUI:
 
             imagen_personaje = pygame.image.load(imchar)
             imagen_aurora = pygame.image.load(imAurora)
+
             if raze == 1:
                 X = 90
                 Y = 310
