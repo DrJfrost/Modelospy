@@ -241,12 +241,12 @@ class charChooserGUI:
                     if event.type == QUIT:
                         pygame.quit()
                         sys.exit()
-                    elif event.type == pygame.KEYDOWN:
-                        if event.key == K_LEFT:
+                    keys = pygame.key.get_pressed()
+                        if keys[K_LEFT]:
                             positX -= velocidad
                             X -= velocidad
                             posX -= velocidad
-                        elif event.key == K_RIGHT:
+                        elif keys[K_RIGHT]:
                             positX += velocidad
                             posX += velocidad
                             X += velocidad
