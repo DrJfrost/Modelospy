@@ -7,6 +7,7 @@ from Character import Conjurer
 from Character import Devil
 from Character import Orc
 from Character import Warrior
+from Character import Adapter
 
 class CharacterCreator():
     def __init__(self):
@@ -20,7 +21,9 @@ class ConjurerCreator(CharacterCreator):
     def __init__(self):
         pass
     def factorymethod(self):
-        return Conjurer()
+        x = Conjurer()
+        evilConjurer=Adapter(x)
+        return evilConjurer
     
 class DevilCreator(CharacterCreator):
     def __init__(self):

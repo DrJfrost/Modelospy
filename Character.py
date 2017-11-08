@@ -54,29 +54,27 @@ class Character():
 class DevilConjurer(Character):
     def __init__(self):
         print("hola soy un mago oscuro")
-    def getImage (self):
-        return self.image   
-    
-class Adapter(DevilConjurer):
-    def __init__(self, MostrarImagen):
-        image = DevilConjurer.getImage()
-        Conjurer.setImage(image)
-    
-class Conjurer(Adapter):
-    
+
+
+class Conjurer(Character):
     def __init__(self):
         print("hola soy un mago")
-        self.image = "images_characters/WitchDevil.png"  
-       
-    def setImage (self, DevilImagen):
+        self.image = "images_characters/Witch.png"
+
+    def setImage(self, DevilImagen):
         self.image = DevilImagen
-        self.DevilImagen = "images_characters/WitchDevil.png"  
-    
-    
-    #metodo de prueba
+
+    # metodo de prueba
     def hable(self):
-        return("yo soy mago")
-    
+        return ("yo soy mago")
+
+
+class Adapter(Conjurer):
+    _devilConjurer=None
+    def __init__(self, Conjurer):
+        self._devilConjurer=Conjurer
+    def getImage(self):
+        return "images_characters/WitchDevil.png"
     
 class Devil(Character):
     
