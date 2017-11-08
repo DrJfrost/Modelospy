@@ -173,7 +173,7 @@ class charChooserGUI:
             pygame.init()
             ventana = pygame.display.set_mode((1024, 683))
             pygame.display.set_caption("personajes")
-
+            pygame.mixer.music.load("Musica/musica.mp3")
             imagen_arma = pygame.image.load(imweapon)
 
             imagen_personaje = pygame.image.load(imchar)
@@ -212,6 +212,7 @@ class charChooserGUI:
             verde = (0, 255, 0)
             derecha = True
             ventana.blit(fondo, (posX, posY))
+            pygame.mixer.music.play(2)
             while True:
                 ventana.fill(verde)
                 ventana.blit(fondo, (0, 0))
