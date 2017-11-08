@@ -208,7 +208,7 @@ class charChooserGUI:
                 positY = 240
 
             fondo = pygame.image.load("fondo.jpg")
-            velocidad = 50
+            velocidad = 5
             verde = (0, 255, 0)
             derecha = True
             ventana.blit(fondo, (posX, posY))
