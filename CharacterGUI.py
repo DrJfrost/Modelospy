@@ -8,7 +8,7 @@ from random import randint
 class charChooserGUI:
     imageweapon = None
     pygame.mixer.init()
-    pygame.mixer.music.load('Musica\musica.wav')
+    pygame.mixer.music.load('Musica\musica.mp3')
     pygame.mixer.music.play(-1)
 
     def __init__(self, master):
