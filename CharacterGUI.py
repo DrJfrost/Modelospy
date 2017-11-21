@@ -171,11 +171,40 @@ class charChooserGUI:
         imAurora = personaje1.getAurora()
         print(imAurora)
 
+
+        class Cursor(pygame.Rect):
+
+            def __init__(self):
+                pygame.Rect.__init__(self,0,0,1,1)
+            def update(self):
+                self.left,self.top=pygame.mouse.get_pos() 
+        class Boton(pygame.sprite.Sprite):
+            def __init__(self,imagen1,imagen2,x=200,y=200):
+                self.imagen_normal=imagen1
+                self.imagen_seleccion=imagen2
+                self.imagen_actual=self.imagen_normal
+                self.rect=self.imagen_actual.get_rect()
+                self.rect.left,self.rect.top=(x,y)
+
+            def update(self,pantalla,cursor):
+                if cursor.colliderect(self.rect):
+                    self.imagen_actual=self.imagen_seleccion
+                else: self.imagen_actual=self.imagen_normal
+
+                pantalla.blit(self.imagen_actual,self.rect)
+
+
         class Animation():
 
             pygame.init()
             ventana = pygame.display.set_mode((1024, 683))
             pygame.display.set_caption("personajes")
+
+            atras1=pygame.image.load("boton/button11.png")
+            atras2=pygame.image.load("boton/button1.png")
+
+            boton1=Boton(atras1,atras2,50,50)
+            cursor1=Cursor()
 
             imagen_arma = pygame.image.load(imweapon)
 
@@ -185,31 +214,79 @@ class charChooserGUI:
             if raze == 1:
                 X = 90
                 Y = 310
+                X1 = 340
+                Y1 = 310
+                X2 = 590
+                Y2 = 310
                 posX = 100
                 posY = 350
+                posX1 = 350
+                posY1 = 350
+                posX2 = 600
+                posY2 = 350
                 positX = -15
                 positY = 260
+                positX1 = 235
+                positY1 = 260
+                positX2 = 485
+                positY2 = 260
             if raze == 2:
                 X = 28
                 Y = 345
+                X1 = 278
+                Y1 = 345
+                X2 = 528
+                Y2 = 345
                 posX = 150
                 posY = 350
+                posX1 = 400
+                posY1 = 350
+                posX2 = 650
+                posY2 = 350
                 positX = 30
                 positY = 260
+                positX1 = 280
+                positY1 = 260
+                positX2 = 530
+                positY2 = 260
             if raze == 3:
                 X = 140
                 Y = 440
+                X1 = 390
+                Y1 = 440
+                X2 = 640
+                Y2 = 440
                 posX = 100
                 posY = 350
+                posX1 = 350
+                posY1 = 350
+                posX2 = 600
+                posY2 = 350
                 positX = 25
                 positY = 260
+                positX1 = 275
+                positY1 = 260
+                positX2 = 525
+                positY2 = 260
             if raze == 4:
                 X = 170
                 Y = 310
+                X1 = 420
+                Y1 = 310
+                X2 = 670
+                Y2 = 310
                 posX = 100
                 posY = 350
+                posX1 = 350
+                posY1 = 350
+                posX2 = 600
+                posY2 = 350
                 positX = -15
                 positY = 240
+                positX1 = 235
+                positY1 = 240
+                positX2 = 485
+                positY2 = 240
 
             fondo = pygame.image.load("fondo.jpg")
             velocidad = 5
@@ -227,25 +304,35 @@ class charChooserGUI:
                     ventana.blit(imagen_aurora, (positX, positY))
                     ventana.blit(imagen_personaje, (posX, posY))
                     ventana.blit(imagen_arma, (X, Y))
-                    ventana.blit(imagen_aurora, (positX + 250, positY))
-                    ventana.blit(imagen_personaje, (posX + 250, posY))
-                    ventana.blit(imagen_arma, (X + 250, Y))
+                    ventana.blit(imagen_aurora, (positX1, positY1))
+                    ventana.blit(imagen_personaje, (posX1, posY1))
+                    ventana.blit(imagen_arma, (X1, Y1))
                 if nchar == "3":
                     ventana.blit(imagen_aurora, (positX, positY))
                     ventana.blit(imagen_personaje, (posX, posY))
                     ventana.blit(imagen_arma, (X, Y))
-                    ventana.blit(imagen_aurora, (positX + 250, positY))
-                    ventana.blit(imagen_personaje, (posX + 250, posY))
-                    ventana.blit(imagen_arma, (X + 250, Y))
-                    ventana.blit(imagen_aurora, (positX + 500, positY))
-                    ventana.blit(imagen_personaje, (posX + 500, posY))
-                    ventana.blit(imagen_arma, (X + 500, Y))
+                    ventana.blit(imagen_aurora, (positX1, positY1))
+                    ventana.blit(imagen_personaje, (posX1, posY1))
+                    ventana.blit(imagen_arma, (X1, Y1))
+                    ventana.blit(imagen_aurora, (positX2, positY2))
+                    ventana.blit(imagen_personaje, (posX2, posY2))
+                    ventana.blit(imagen_arma, (X2, Y2))
 
                 for event in pygame.event.get():
                     if event.type == QUIT:
                         pygame.quit()
                         sys.exit()
-                keys = pygame.key.get_pressed()
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        if cursor1.colliderect(boton1.rect):
+                            root = Tk()
+                            root.title("Character chooser")
+                            root.configure(bg="#191919")
+
+                            charChooser = charChooserGUI(root)
+                            pygame.display.quit()
+                            root.mainloop()       
+
+                keys = pygame.key.get_pressed()        
                 if keys[K_LEFT]:
                     positX -= velocidad
                     X -= velocidad
@@ -254,7 +341,27 @@ class charChooserGUI:
                     positX += velocidad
                     posX += velocidad
                     X += velocidad
+                if keys [K_a]:
+                    positX1 -= velocidad
+                    X1 -= velocidad
+                    posX1 -= velocidad
+                elif keys[K_d]:
+                    positX1 += velocidad
+                    posX1 += velocidad
+                    X1 += velocidad
+                if keys [K_j]:
+                    positX2 -= velocidad
+                    X2 -= velocidad
+                    posX2 -= velocidad
+                elif keys [K_l]:
+                    positX2 += velocidad
+                    posX2 += velocidad
+                    X2 += velocidad
+
+                cursor1.update()
+                boton1.update(ventana,cursor1)
                 pygame.display.update()
+
 
 
 # *** Defines window ***
