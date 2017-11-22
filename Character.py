@@ -5,7 +5,10 @@ Created on 18/09/2017
 '''
 from copy import deepcopy
 
+
 class Character():
+
+
     weapon=None
     objclone=None
     
@@ -57,12 +60,14 @@ class DevilConjurer(Character):
 
 
 class Conjurer(Character):
-    def __init__(self):
+
+    def __init__(self, attack):
+        self._Attack = attack
         print("hola soy un mago")
         self.image = "images_characters/Witch.png"
 
-    def setImage(self, DevilImagen):
-        self.image = DevilImagen
+    def attack(self):
+        self._Attack.attack()
 
     # metodo de prueba
     def hable(self):
@@ -71,17 +76,25 @@ class Conjurer(Character):
 
 class Adapter(Conjurer):
     _devilConjurer=None
-    def __init__(self, Conjurer):
+    def __init__(self, Conjurer, attack):
+        self._Attack = attack
         self._devilConjurer=Conjurer
+
     def getImage(self):
         return "images_characters/WitchDevil.png"
+
+    def attack(self):
+        self._Attack.attack()
     
 class Devil(Character):
     
-    def __init__(self):
+    def __init__(self, attack):
+        self._Attack = attack
         print("hola soy un demonio")
         self.image = "images_characters\Demon.png"
         
+    def attack(self):
+        self._Attack.attack()
 
     #metodo de prueba
     def hable(self):
@@ -89,10 +102,13 @@ class Devil(Character):
     
     
 class Orc(Character):
-    def __init__(self):
+    def __init__(self, attack):
+        self._Attack = attack
         print("hola soy un orco")
         self.image = "images_characters\orc.png"
-       
+
+    def attack(self):
+        self._Attack.attack()
         
     #metodo de prueba
     def hable(self):
@@ -100,9 +116,13 @@ class Orc(Character):
     
     
 class Warrior(Character):
-    def __init__(self):
+    def __init__(self, attack):
+        self._Attack = attack
         print("hola soy un guerrero")
         self.image = "images_characters\Globin.png"
+
+    def attack(self):
+        self._Attack.attack()
         
         
     #metodo de prueba

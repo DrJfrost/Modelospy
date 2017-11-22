@@ -7,11 +7,12 @@ from random import randint
 
 class charChooserGUI:
     imageweapon = None
-    pygame.mixer.init()
-    pygame.mixer.music.load('Musica\musica.mp3')
-    pygame.mixer.music.play(-1)
 
     def __init__(self, master):
+
+        pygame.mixer.init()
+        pygame.mixer.music.load('Musica\musica.wav')
+        pygame.mixer.music.play(-1)
 
         # ***** Parent Window Size ****
         master.minsize(width=1000, height=500)
@@ -31,7 +32,7 @@ class charChooserGUI:
         img3 = PhotoImage(file="images_characters/3.png")
         img4 = PhotoImage(file="images_characters/4.png")
 
-        char1 = Button(label, image=img1, command=lambda: self.chooseWeapon(1, master), bg="black")
+        char1 = Button(label, image=img1, command=lambda: self.chooseConjurer(master), bg="black")
         char1.image = img1
         char1.grid(row=0, padx=10, pady=5)
         char2 = Button(label, image=img2, command=lambda: self.chooseWeapon(2, master), bg="black")
@@ -58,6 +59,42 @@ class charChooserGUI:
         # *** Adds the whole content that's on the label ***
         label.pack()
 
+    def chooseConjurer(self, root):
+
+        root.destroy()
+        root2 = Tk()
+        root2.title("Conjurer Chooser")
+        root2.configure(bg="#191919")
+        root2.minsize(width=660, height=460)
+
+        # *** Main content ***
+
+        label = Label(bg="#3a3a3a")
+
+        #*** Inner content ***
+
+        title = Label(text="Which side do you want to be? D:<", font="times 22 bold italic", fg="#ffca1e", bg="#3a3a3a")
+        title.pack(pady=(40, 0))
+
+        img1 = PhotoImage(file="images_characters/1.png")
+        img2 = PhotoImage(file="images_characters/5.png")
+
+        char1 = Button(label, image=img1, command=lambda: self.chooseWeapon(1, root2), bg="black", highlightbackground="#222222")
+        char1.image = img1
+        char1.grid(row=0, padx=(40,40), pady=10)
+        char2 = Button(label, image=img2, command=lambda: self.chooseWeapon(5, root2), bg="black")
+        char2.image = img2
+        char2.grid(row=0, column=1, padx=(40,40), pady=10)
+
+        # ****** Names *****
+
+        name1 = Label(label, text="Good  Witch", font="times 10 bold italic", fg="#ffca1e", bg="#3a3a3a")
+        name1.grid(row=1, column=0)
+        name2 = Label(label, text="Evil Witch", font="times 10 bold italic", fg="#ffca1e", bg="#3a3a3a")
+        name2.grid(row=1, column=1)
+
+        label.pack()
+
     def chooseWeapon(self, raze, root):
 
         root.destroy()
@@ -77,7 +114,7 @@ class charChooserGUI:
         # ***** Images ****
         raze1 = raze
 
-        if raze1 == 1:
+        if (raze1 == 1) or (raze1 == 5):
             image1 = PhotoImage(file="weapons_witch\EpicScepter.png")
             image2 = PhotoImage(file="weapons_witch\HeavenlyScepter.png")
             image3 = PhotoImage(file="weapons_witch\Scepter.png")
@@ -141,6 +178,9 @@ class charChooserGUI:
         label.pack()
 
     def createChar(self, raze, weapon, nchar, root2):
+
+        pygame.mixer.music.stop()
+
         root2.destroy()
 
         creacion = EnlistCharacter()
@@ -203,7 +243,7 @@ class charChooserGUI:
             atras1=pygame.image.load("boton/button11.png")
             atras2=pygame.image.load("boton/button1.png")
 
-            boton1=Boton(atras1,atras2,10,0)
+            boton1=Boton(atras1,atras2,50,50)
             cursor1=Cursor()
 
             imagen_arma = pygame.image.load(imweapon)
@@ -211,7 +251,8 @@ class charChooserGUI:
             imagen_personaje = pygame.image.load(imchar)
             imagen_aurora = pygame.image.load(imAurora)
 
-            if raze == 1:
+
+            if (raze == 1) or (raze == 2):
                 X = 90
                 Y = 310
                 X1 = 340
@@ -293,6 +334,8 @@ class charChooserGUI:
             verde = (0, 255, 0)
             derecha = True
             ventana.blit(fondo, (posX, posY))
+            pygame.mixer.music.load('Musica\musica1.wav')
+            pygame.mixer.music.play(-1)
             while True:
                 ventana.fill(verde)
                 ventana.blit(fondo, (0, 0))
@@ -330,10 +373,12 @@ class charChooserGUI:
 
                             charChooser = charChooserGUI(root)
                             pygame.display.quit()
-                            root.mainloop()
-                            sys.exit()       
+                            pygame.mixer.init()
+                            pygame.mixer.music.load('Musica\musica.wav')
+                            pygame.mixer.music.play(-1)
+                            root.mainloop()       
 
-                keys = pygame.key.get_pressed()        
+                keys = pygame.key.get_pressed()
                 if keys[K_LEFT]:
                     positX -= velocidad
                     X -= velocidad
@@ -358,6 +403,8 @@ class charChooserGUI:
                     positX2 += velocidad
                     posX2 += velocidad
                     X2 += velocidad
+                if keys[K_SPACE]:
+                    personaje1.attack()
 
                 cursor1.update()
                 boton1.update(ventana,cursor1)

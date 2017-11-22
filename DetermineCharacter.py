@@ -3,11 +3,7 @@ Created on 18/09/2017
 
 @author: Sebastian
 '''
-from CharacterCreator import OrcCreator
-from CharacterCreator import ConjurerCreator
-from CharacterCreator import DevilCreator
-from CharacterCreator import WarriorCreator
-from CharacterCreator import CharacterCreator
+from CharacterCreator import *
 
 class Handler():
     def __init__(self):
@@ -63,6 +59,17 @@ class HandlerOptFour(Handler):
             return OrcCreator()
         else:
             return self.succesor.handlerRequest(number)
+
+
+class HandlerOptFive(Handler):
+    def __init__(self):
+        pass
+
+    def handlerRequest(self, number):
+        if(number==5):
+            return EvilConjurerCreator()
+        else:
+            return self.succesor.handlerRequest(number)
         
     
     
@@ -71,7 +78,7 @@ class DetermineCharacter():
         pass
     createcharacter=None
     character=None
-    handlers = [HandlerOptOne(), HandlerOptTwo(), HandlerOptThree(), HandlerOptFour(), HandlerOptDefault()]
+    handlers = [HandlerOptOne(), HandlerOptTwo(), HandlerOptThree(), HandlerOptFour(), HandlerOptFive(), HandlerOptDefault()]
     
     
     def createCharacter(self,number):
@@ -80,7 +87,7 @@ class DetermineCharacter():
             self.handlers[i].setSuccesor(self.handlers[i+1])
         
         self.createcharacter=self.handlers[0].handlerRequest(number)
-        #self.createcharacter={1: ConjurerCreator(), 2: DevilCreator(), 3: WarriorCreator(), 4: OrcCreator() }
+
         self.character=self.createcharacter.CreateCharacter()
         
     def getCharacter(self):
