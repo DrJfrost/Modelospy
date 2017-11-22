@@ -34,13 +34,13 @@ class charChooserGUI:
         char1 = Button(label, image=img1, command=lambda: self.chooseWeapon(1, master), bg="black")
         char1.image = img1
         char1.grid(row=0, padx=10, pady=5)
-        char2 = Button(label, image=img2, command=lambda: self.chooseWeapon(2), bg="black")
+        char2 = Button(label, image=img2, command=lambda: self.chooseWeapon(2, master), bg="black")
         char2.image = img2
         char2.grid(row=0, column=1, padx=10, pady=5)
-        char3 = Button(label, image=img3, command=lambda: self.chooseWeapon(3), bg="black")
+        char3 = Button(label, image=img3, command=lambda: self.chooseWeapon(3, master), bg="black")
         char3.image = img3
         char3.grid(row=0, column=2, padx=10, pady=5)
-        char4 = Button(label, image=img4, command=lambda: self.chooseWeapon(4), bg="black")
+        char4 = Button(label, image=img4, command=lambda: self.chooseWeapon(4, master), bg="black")
         char4.image = img4
         char4.grid(row=0, column=3, padx=10, pady=5)
 
@@ -203,7 +203,7 @@ class charChooserGUI:
             atras1=pygame.image.load("boton/button11.png")
             atras2=pygame.image.load("boton/button1.png")
 
-            boton1=Boton(atras1,atras2,50,50)
+            boton1=Boton(atras1,atras2,10,0)
             cursor1=Cursor()
 
             imagen_arma = pygame.image.load(imweapon)
@@ -330,7 +330,8 @@ class charChooserGUI:
 
                             charChooser = charChooserGUI(root)
                             pygame.display.quit()
-                            root.mainloop()       
+                            root.mainloop()
+                            sys.exit()       
 
                 keys = pygame.key.get_pressed()        
                 if keys[K_LEFT]:
