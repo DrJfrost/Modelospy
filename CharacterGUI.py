@@ -11,7 +11,7 @@ class charChooserGUI:
     def __init__(self, master):
 
         pygame.mixer.init()
-        pygame.mixer.music.load('Musica\musica.wav')
+        pygame.mixer.music.load('Musica\musica1.wav')
         pygame.mixer.music.play(-1)
 
         # ***** Parent Window Size ****
@@ -243,8 +243,12 @@ class charChooserGUI:
             atras1=pygame.image.load("boton/button11.png")
             atras2=pygame.image.load("boton/button1.png")
 
-            boton1=Boton(atras1,atras2,50,50)
+            boton1=Boton(atras1,atras2,0,0)
             cursor1=Cursor()
+
+            imagen_cursor=pygame.image.load("cursor/sword.png")
+            pX=0
+            pY=0
 
             imagen_arma = pygame.image.load(imweapon)
 
@@ -252,7 +256,8 @@ class charChooserGUI:
             imagen_aurora = pygame.image.load(imAurora)
 
 
-            if (raze == 1) or (raze == 2):
+            if (raze == 1) or (raze == 5):
+                
                 X = 90
                 Y = 310
                 X1 = 340
@@ -271,6 +276,7 @@ class charChooserGUI:
                 positY1 = 260
                 positX2 = 485
                 positY2 = 260
+                
             if raze == 2:
                 X = 28
                 Y = 345
@@ -333,7 +339,7 @@ class charChooserGUI:
             velocidad = 5
             verde = (0, 255, 0)
             derecha = True
-            ventana.blit(fondo, (posX, posY))
+           
             pygame.mixer.music.load('Musica\musica1.wav')
             pygame.mixer.music.play(-1)
             while True:
@@ -360,6 +366,7 @@ class charChooserGUI:
                     ventana.blit(imagen_aurora, (positX2, positY2))
                     ventana.blit(imagen_personaje, (posX2, posY2))
                     ventana.blit(imagen_arma, (X2, Y2))
+                ventana.blit(imagen_cursor, (pX,pY))
 
                 for event in pygame.event.get():
                     if event.type == QUIT:
@@ -374,9 +381,10 @@ class charChooserGUI:
                             charChooser = charChooserGUI(root)
                             pygame.display.quit()
                             pygame.mixer.init()
-                            pygame.mixer.music.load('Musica\musica.wav')
+                            pygame.mixer.music.load('Musica\musica1.wav')
                             pygame.mixer.music.play(-1)
-                            root.mainloop()       
+                            root.mainloop() 
+                            sys.exit()      
 
                 keys = pygame.key.get_pressed()
                 if keys[K_LEFT]:
@@ -408,6 +416,11 @@ class charChooserGUI:
 
                 cursor1.update()
                 boton1.update(ventana,cursor1)
+                pX,pY= pygame.mouse.get_pos()
+                pX= pX-80
+                pY= pY-90
+                pygame.mouse.set_visible(False)
+                
                 pygame.display.update()
 
 
