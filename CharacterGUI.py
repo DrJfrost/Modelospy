@@ -31,7 +31,7 @@ class charChooserGUI:
         img3 = PhotoImage(file="images_characters/3.png")
         img4 = PhotoImage(file="images_characters/4.png")
 
-        char1 = Button(label, image=img1, command=lambda: self.chooseWeapon(1), bg="black")
+        char1 = Button(label, image=img1, command=lambda: self.chooseWeapon(1, master), bg="black")
         char1.image = img1
         char1.grid(row=0, padx=10, pady=5)
         char2 = Button(label, image=img2, command=lambda: self.chooseWeapon(2), bg="black")
@@ -58,7 +58,7 @@ class charChooserGUI:
         # *** Adds the whole content that's on the label ***
         label.pack()
 
-    def chooseWeapon(self, raze):
+    def chooseWeapon(self, raze, root):
 
         root.destroy()
         root2 = Tk()
