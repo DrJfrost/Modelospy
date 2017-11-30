@@ -218,6 +218,17 @@ class charChooserGUI:
                 pygame.Rect.__init__(self,0,0,1,1)
             def update(self):
                 self.left,self.top=pygame.mouse.get_pos() 
+
+        
+        
+        class BotonAtacar(pygame.sprite.Sprite):
+            def __init__(self,imagen1,imagen2,x=-50,y=500):
+                self.imagen_normal=imagen1
+                self.imagen_seleccion=imagen2
+                self.imagen_actual=self.imagen_normal
+                self.rect=self.imagen_actual.get_rect()
+                self.rect.left,self.rect.top=(50,500)
+
         class Boton(pygame.sprite.Sprite):
             def __init__(self,imagen1,imagen2,x=200,y=200):
                 self.imagen_normal=imagen1
@@ -225,6 +236,8 @@ class charChooserGUI:
                 self.imagen_actual=self.imagen_normal
                 self.rect=self.imagen_actual.get_rect()
                 self.rect.left,self.rect.top=(x,y)
+
+        
 
             def update(self,pantalla,cursor):
                 if cursor.colliderect(self.rect):
@@ -238,6 +251,7 @@ class charChooserGUI:
 
             pygame.init()
             ventana = pygame.display.set_mode((1024, 683))
+            SonidoEspada = pygame.mixer.Sound("Musica/samurai.wav")
             pygame.display.set_caption("personajes")
 
             atras1=pygame.image.load("boton/button11.png")
@@ -245,7 +259,9 @@ class charChooserGUI:
 
             boton1=Boton(atras1,atras2,0,0)
             cursor1=Cursor()
-
+            r1=pygame.Rect(50,440,300,500)
+            r2=pygame.Rect(400,440,300,500)
+            r3=pygame.Rect(600,440,300,500)
             imagen_cursor=pygame.image.load("cursor/sword.png")
             pX=0
             pY=0
@@ -254,6 +270,7 @@ class charChooserGUI:
 
             imagen_personaje = pygame.image.load(imchar)
             imagen_aurora = pygame.image.load(imAurora)
+            
 
 
             if (raze == 1) or (raze == 5):
@@ -336,12 +353,14 @@ class charChooserGUI:
                 positY2 = 240
 
             fondo = pygame.image.load("fondo.jpg")
+            boton2 = Boton(fondo,fondo,0,0)
             velocidad = 5
             verde = (0, 255, 0)
             derecha = True
            
             pygame.mixer.music.load('Musica\musica1.wav')
             pygame.mixer.music.play(-1)
+            sangre = pygame.image.load("efecto/sangre.png")
             while True:
                 ventana.fill(verde)
                 ventana.blit(fondo, (0, 0))
@@ -372,6 +391,7 @@ class charChooserGUI:
                     if event.type == QUIT:
                         pygame.quit()
                         sys.exit()
+                        pintar_rect=False
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         if cursor1.colliderect(boton1.rect):
                             root = Tk()
@@ -385,6 +405,29 @@ class charChooserGUI:
                             pygame.mixer.music.play(-1)
                             root.mainloop() 
                             sys.exit()      
+                        if cursor1.colliderect(r1):
+                            print("muerto")
+                            pintar_rect=True
+                            SonidoEspada.play()
+                            ventana.blit(sangre,(0,300))
+                        if cursor1.colliderect(r2):
+                            print("muerto")
+                            pintar_rect=True
+                            SonidoEspada.play()
+                            ventana.blit(sangre,(300,300))
+                        if cursor1.colliderect(r3):
+                            print("muerto")
+                            pintar_rect=True
+                            SonidoEspada.play()
+                            ventana.blit(sangre,(600,300))
+                    if event.type == pygame.MOUSEBUTTONUP:
+                        if cursor1.colliderect(r1):
+                            ventana.blit(sangre,(0,300))
+                        if cursor1.colliderect(r2):
+                            ventana.blit(sangre,(300,300))
+                        if cursor1.colliderect(r3):
+                            print("muerto")
+                            ventana.blit(sangre,(600,300))
 
                 keys = pygame.key.get_pressed()
                 if keys[K_LEFT]:
@@ -414,6 +457,7 @@ class charChooserGUI:
                 if keys[K_SPACE]:
                     personaje1.attack()
 
+                
                 cursor1.update()
                 boton1.update(ventana,cursor1)
                 pX,pY= pygame.mouse.get_pos()
