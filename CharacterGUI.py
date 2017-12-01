@@ -246,6 +246,9 @@ class charChooserGUI:
 
                 pantalla.blit(self.imagen_actual,self.rect)
 
+        
+
+
 
         class Animation():
 
@@ -265,7 +268,9 @@ class charChooserGUI:
             imagen_cursor=pygame.image.load("cursor/sword.png")
             pX=0
             pY=0
-
+            cont1=1000
+            cont2=1000
+            cont3=1000
             imagen_arma = pygame.image.load(imweapon)
 
             imagen_personaje = pygame.image.load(imchar)
@@ -357,17 +362,19 @@ class charChooserGUI:
             velocidad = 5
             verde = (0, 255, 0)
             derecha = True
-           
+            
+            
             pygame.mixer.music.load('Musica\musica1.wav')
             pygame.mixer.music.play(-1)
             sangre = pygame.image.load("efecto/sangre.png")
+            wood = pygame.image.load("efecto/2.png")
             while True:
                 ventana.fill(verde)
                 ventana.blit(fondo, (0, 0))
                 if nchar == "1":
-                    ventana.blit(imagen_aurora, (positX, positY))
-                    ventana.blit(imagen_personaje, (posX, posY))
-                    ventana.blit(imagen_arma, (X, Y))
+                    ventana.blit(imagen_aurora, (positX1, positY1))
+                    ventana.blit(imagen_personaje, (posX1, posY1))
+                    ventana.blit(imagen_arma, (X1, Y1))
                 if nchar == "2":
                     ventana.blit(imagen_aurora, (positX, positY))
                     ventana.blit(imagen_personaje, (posX, posY))
@@ -386,6 +393,7 @@ class charChooserGUI:
                     ventana.blit(imagen_personaje, (posX2, posY2))
                     ventana.blit(imagen_arma, (X2, Y2))
                 ventana.blit(imagen_cursor, (pX,pY))
+                ventana.blit(wood, (450,-70))
 
                 for event in pygame.event.get():
                     if event.type == QUIT:
@@ -406,27 +414,35 @@ class charChooserGUI:
                             root.mainloop() 
                             sys.exit()      
                         if cursor1.colliderect(r1):
-                            print("muerto")
                             pintar_rect=True
                             SonidoEspada.play()
                             ventana.blit(sangre,(0,300))
+                            cont1=cont1-10
+                            print(" vida del grupo:"+ str(cont1))
+                            if cont1==0:
+                                print("muerto")
                         if cursor1.colliderect(r2):
-                            print("muerto")
                             pintar_rect=True
                             SonidoEspada.play()
                             ventana.blit(sangre,(300,300))
+                            cont1=cont1-10
+                            print("vida del grupo:"+ str(cont1))
+                            if cont1==0:
+                                print("muerto")
                         if cursor1.colliderect(r3):
-                            print("muerto")
                             pintar_rect=True
                             SonidoEspada.play()
                             ventana.blit(sangre,(600,300))
+                            cont1=cont1-10
+                            print("vida del grupo:"+ str(cont1))
+                            if cont1==0:
+                                print("muerto")
                     if event.type == pygame.MOUSEBUTTONUP:
                         if cursor1.colliderect(r1):
                             ventana.blit(sangre,(0,300))
                         if cursor1.colliderect(r2):
                             ventana.blit(sangre,(300,300))
                         if cursor1.colliderect(r3):
-                            print("muerto")
                             ventana.blit(sangre,(600,300))
 
                 keys = pygame.key.get_pressed()
@@ -455,8 +471,12 @@ class charChooserGUI:
                     posX2 += velocidad
                     X2 += velocidad
                 if keys[K_SPACE]:
+                    SonidoEspada.play()
                     personaje1.attack()
-
+                fuente = pygame.font.Font("fuente/fuente.ttf",50)
+                text1="Vida del grupo:"+str(cont1)
+                texto1= fuente.render(text1,1,(155,127,22))
+                ventana.blit(texto1,(500,50))
                 
                 cursor1.update()
                 boton1.update(ventana,cursor1)
@@ -464,6 +484,7 @@ class charChooserGUI:
                 pX= pX-80
                 pY= pY-90
                 pygame.mouse.set_visible(False)
+                pygame.display.flip()
                 
                 pygame.display.update()
 
